@@ -38,4 +38,6 @@ export class AppComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  application = ['Provider portal', 'Public portal', 'Gateway', 'Admin Portal', 'OSRM', 'Keycloak', 'UI provider', 'UI public', 'UI admin'];
+  dataColumn = ['ID', 'Start date', 'End date', 'Time', 'URI', 'Status', 'Request Body', 'Response message', 'Details'];
 }
