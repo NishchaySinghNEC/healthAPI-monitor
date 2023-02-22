@@ -1,0 +1,17 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+
+.table-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+  
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
