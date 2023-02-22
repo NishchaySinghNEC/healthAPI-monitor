@@ -3,6 +3,19 @@ table {
     width: 100%;
   }
 
+.heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+h1{ 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
 .table-data{
     display: flex;
     flex-direction: column;
