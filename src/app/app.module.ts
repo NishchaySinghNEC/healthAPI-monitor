@@ -11,8 +11,10 @@ import { ApplicationListComponent } from './application-list/application-list.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { AppRoutingModule } from './app-routing.module';
 
 import { MaterialModule } from './material/material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { MaterialModule } from './material/material.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MaterialModule
   ],
   providers: [],
