@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 
+import { HeaderComponent } from './header/header.component';
+import { MaterialModule } from './material/material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import {MatIconModule} from '@angular/material/icon';
     ApplicationListComponent,
     NavbarComponent,
     ErrorpageComponent,
-    TabsComponent
+    TabsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
