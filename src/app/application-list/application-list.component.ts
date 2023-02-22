@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { ApiCallsService } from '../api-calls.service';
+import { ENDPOINTS } from '../url-constants';
 
 
 export interface TableElement {
@@ -30,9 +32,12 @@ export class ApplicationListComponent implements OnInit {
     {position: 9, name: 'UI Public', status: 400 }
   ];
 
-  constructor() { }
+  constructor(private apiSrv:ApiCallsService) { }
 
   ngOnInit(): void {
+    this.apiSrv.apiCheckCall(ENDPOINTS.Provider_Portal.url).subscribe(data=>console.log(data),
+    err=>console.log(err)
+    )
   }
 
   textColor(statusCode: number){

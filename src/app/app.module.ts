@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { MaterialModule } from './material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
