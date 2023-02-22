@@ -11,6 +11,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { MaterialModule } from './material/material.module';
 import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

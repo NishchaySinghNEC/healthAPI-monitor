@@ -1,11 +1,11 @@
 export const ENDPOINTS = {
-    'Provider Portal':{url:'https://provider.housing-dp.dev/health.json'},
-    'Public Portal' : {url:'https://northshirecc-qa.housing-dp.dev/health.json'},
+    'Provider_Portal':{url:'https://provider.housing-dp.dev/health.json'},
+    'Public_Portal' : {url:'https://northshirecc-qa.housing-dp.dev/health.json'},
     'Gateway':{url:''},
-    'Admin Portal':{url:''},
+    'Admin_Portal':{url:''},
     'OSRM':{url:''},
-    'Key Cloak':{url:'https://signin.housing-dp.dev/auth/health'},
-    'UI Provider':{url:'https://northshirecc-qa.housing-dp.dev/health.json'},
-    'UI Admin':{url:'https://northshirecc-qa.housing-dp.dev/health.json'},
-    'UI Public':{url:''}
+    'Key_Cloak':{url:'https://signin.housing-dp.dev/auth/health'},
+    'UI_Provider':{url:'https://northshirecc-qa.housing-dp.dev/health.json'},
+    'UI_Admin':{url:'https://northshirecc-qa.housing-dp.dev/health.json'},
+    'UI_Public':{url:''}
 }

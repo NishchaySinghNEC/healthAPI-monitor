@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { AddEditFormComponent } from '../add-edit-form/add-edit-form.component';
+import { ApiCallsService } from '../api-calls.service';
 import { ENDPOINTS } from '../url-constants';
 
 
@@ -20,10 +20,13 @@ export interface TableElement {
 export class ApplicationListComponent implements OnInit {
 
   elementData = Object.keys(ENDPOINTS)
-  
-  constructor(public dialog: MatDialog) { }
+
+  constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.apiSrv.apiCheckCall(ENDPOINTS.Provider_Portal.url).subscribe(data=>console.log(data),
+    err=>console.log(err)
+    )
   }
 
   textColor(statusCode: number){
