@@ -14,11 +14,8 @@ import { ApplicationListComponent } from './application-list/application-list.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import { MatInputModule } from '@angular/material/input';
-import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { HeaderComponent } from './header/header.component';
+import { MaterialModule } from './material/material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,19 +23,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ApplicationListComponent,
     NavbarComponent,
     ErrorpageComponent,
-    TabsComponent
+    TabsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatFormFieldModule,
-    MatInputModule, 
-    MatTableModule,
-    MatTabsModule,
-    AppRoutingModule,
-    MatSortModule,
-    MatPaginatorModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
