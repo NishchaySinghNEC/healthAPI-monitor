@@ -14,17 +14,8 @@ import { ApplicationListComponent } from './application-list/application-list.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import { MatInputModule } from '@angular/material/input';
-import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatCardModule} from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-
-import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './material/material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,24 +23,12 @@ import { MaterialModule } from './material/material.module';
     ApplicationListComponent,
     NavbarComponent,
     ErrorpageComponent,
-    TabsComponent,
-    HeaderComponent
+    TabsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatFormFieldModule,
-    MatInputModule, 
-    MatTableModule,
-    MatTabsModule,
     AppRoutingModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule
     MaterialModule
   ],
   providers: [],
