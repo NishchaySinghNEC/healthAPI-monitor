@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { AddEditFormComponent } from '../add-edit-form/add-edit-form.component';
+import { ENDPOINTS } from '../url-constants';
 
 
 export interface TableElement {
@@ -16,21 +19,9 @@ export interface TableElement {
 
 export class ApplicationListComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'status'];
-
-  elementData: TableElement[] = [
-    {position: 1, name: 'Provider Portal', status: 200 },
-    {position: 2, name: 'Public Portal', status: 200},
-    {position: 3, name: 'Gateway', status: 400},
-    {position: 4, name: 'Admin Portal', status: 200},
-    {position: 5, name: 'OSRM', status: 200 },
-    {position: 6, name: 'Keyclok', status: 400 },
-    {position: 7, name: 'UI Provider', status: 400 },
-    {position: 8, name: 'UI Admin', status: 600 },
-    {position: 9, name: 'UI Public', status: 400 }
-  ];
-
-  constructor() { }
+  elementData = Object.keys(ENDPOINTS)
+  
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -39,4 +30,11 @@ export class ApplicationListComponent implements OnInit {
     return statusCode === 200 ? 'primary-green' : 'warn'
   }
 
+  openDialog(){
+    const dialofRef = this.dialog.open(AddEditFormComponent,{
+      data: {name: 'nishchay', age:'22'}
+    });
+
+    
+  }
 }

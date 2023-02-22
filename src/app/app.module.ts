@@ -1,11 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatTableModule } from '@angular/material/table';
-
-
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { MaterialModule } from './material/material.module';
+import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,13 +19,15 @@ import { MaterialModule } from './material/material.module';
     ApplicationListComponent,
     NavbarComponent,
     ErrorpageComponent,
-    TabsComponent
+    TabsComponent,
+    AddEditFormComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
