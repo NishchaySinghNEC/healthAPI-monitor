@@ -4,8 +4,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 
-
-
+import {Component} from '@angular/core';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { MaterialModule } from './material/material.module';
+import { DetaildiaComponent } from './detaildia/detaildia.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,16 @@ import { MaterialModule } from './material/material.module';
     ApplicationListComponent,
     NavbarComponent,
     ErrorpageComponent,
-    TabsComponent
+    TabsComponent,
+    DetaildiaComponent,
+   
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

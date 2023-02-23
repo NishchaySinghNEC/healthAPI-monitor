@@ -1,0 +1,8 @@
+  <h1 mat-dialog-title>Api's Details</h1>
+  <textarea id="clipboard-example-textarea" md-maxlength="5000" auto-focus cols="100" rows="13" [(ngModel)]="value"></textarea>
+  <div mat-dialog-actions>
+    <button mat-button class="custom-button-theme mat-raised-button" mat-dialog-close>Close</button>
+    <button mat-button class="custom-button-theme mat-raised-button" [cdkCopyToClipboard]="value">Copy</button>
+  </div>
+ 
+

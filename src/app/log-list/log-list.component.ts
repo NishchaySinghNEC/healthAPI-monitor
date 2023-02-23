@@ -2,6 +2,9 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DetaildiaComponent } from '../detaildia/detaildia.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogConfig } from '@angular/cdk/dialog';
 
 
 export interface TableElement {
@@ -95,6 +98,8 @@ const ELEMENT_DATA: TableElement[] = [
   styleUrls: ['./log-list.component.css']
 })
 export class LogListComponent implements AfterViewInit {
+  dialogRef: any;
+  constructor(public dialog: MatDialog) { }
 
   application = ['Provider portal', 'Public portal', 'Gateway', 'Admin Portal', 'OSRM', 'Keycloak', 'UI provider', 'UI public', 'UI admin'];
   displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'status', 'requestBody', 'responseMessage', 'details'];
@@ -102,12 +107,23 @@ export class LogListComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  
+ 
 
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  openDialog() {
+    this.dialogRef=this.dialog.open(DetaildiaComponent,{
+      height: '70%',
+      width: '60%',
+      
+    });
+}
+
 
 
   applyFilter(event: Event) {
@@ -119,6 +135,7 @@ export class LogListComponent implements AfterViewInit {
     }
   }
 
-  constructor() { }
+  
 
+  
 }
