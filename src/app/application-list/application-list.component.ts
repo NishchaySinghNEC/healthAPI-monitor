@@ -49,7 +49,7 @@ export class ApplicationListComponent implements OnInit {
     });
     dialofRef.afterClosed().subscribe(result=>{
       if(result){
-        this.elementData = Object.keys(result)
+        this.elementData = result;
       }
     })
   }
