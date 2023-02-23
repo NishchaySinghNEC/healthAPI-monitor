@@ -1,6 +1,6 @@
 export const ENDPOINTS = {
-    'Provider_Portal':{url:'https://provider.housing-dp.dev/health.json'},
-    'Public_Portal' : {url:'https://northshirecc-qa.housing-dp.dev/health.json'},
+    'Provider_Portal':{url:'https://api.housing-dp.dev/public/healthcheck'},
+    'Public_Portal' : {url:'https://api.housing-dp.dev/public/healthcheck'},
     'Gateway':{url:''},
     'Admin_Portal':{url:''},
     'OSRM':{url:''},

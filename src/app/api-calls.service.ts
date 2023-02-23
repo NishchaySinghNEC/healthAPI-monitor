@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -10,10 +10,10 @@ import {ENDPOINTS} from './url-constants'
 })
 export class ApiCallsService {
 
-  constructor( private http: HttpClient) { }
-
+  constructor( private http: HttpClient,private jsonp:HttpClientJsonpModule) { }
 
   public apiCheckCall(url:string){
-    return this.http.get<any>(ENDPOINTS.Provider_Portal.url, {observe: 'response'})
+    return this.http.get<any>(url,
+      {observe:'response'})
   }
 }
