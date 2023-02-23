@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const materialComponents = [
   MatSlideToggleModule,
@@ -29,7 +30,8 @@ const materialComponents = [
   MatDialogModule,
   ClipboardModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatGridListModule
 ]
 
 @NgModule({

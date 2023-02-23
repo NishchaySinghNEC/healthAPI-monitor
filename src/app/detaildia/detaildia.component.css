@@ -4,5 +4,9 @@
     background-color:  #3e73d7;
     font-size: 15px;
     color: white;
+}
 
+#clipboard-example-textarea{
+    height: auto;
+    width: auto;
 }
