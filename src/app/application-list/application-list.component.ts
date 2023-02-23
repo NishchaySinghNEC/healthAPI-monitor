@@ -24,12 +24,22 @@ export class ApplicationListComponent implements OnInit {
   constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.apiSrv.apiCheckCall(ENDPOINTS[0].url).subscribe(data=>console.log(data)
-    )
+    for(let i = 0; i<ENDPOINTS.length; i++){
+      this.apiSrv.apiCheckCall(ENDPOINTS[i].url).subscribe(data=>{
+        console.log(data)
+        if(data.ok){
+          this.elementData[i].status = 'SUCCESS'
+        }
+        else{
+          this.elementData[i].status = 'FAIL'
+        }
+      }
+      )  
+    }
   }
 
-  textColor(statusCode: number){
-    return statusCode === 200 ? 'primary-green' : 'warn'
+  textColor(statusCode: string){
+    return statusCode === 'SUCCESS' ? 'primary-green' : 'warn'
   }
 
   openDialog(elementData: string){
@@ -39,7 +49,7 @@ export class ApplicationListComponent implements OnInit {
     });
     dialofRef.afterClosed().subscribe(result=>{
       if(result){
-        this.elementData = Object.keys(result)
+        this.elementData = result;
       }
     })
   }

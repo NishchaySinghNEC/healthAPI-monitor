@@ -6,7 +6,7 @@
         <mat-icon fontIcon="edit" (click)="openDialog(element)"></mat-icon>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-button [class]="textColor(200)">200</button>
+        <button mat-button [class]="textColor(element.status)">{{element.status}}</button>
       </mat-card-actions>
     </mat-card>
   </div>

@@ -2,17 +2,9 @@
   <form [formGroup]="applicationDetail" (ngSubmit)="onSubmit()">
     <mat-card-header>
       <mat-card-title>Application Form</mat-card-title>
+      <mat-card-subtitle>{{data.applicationName}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <mat-form-field>
-        <input
-          type="text"
-          placeholder="Application name"
-          formControlName="applicationName"
-          matInput
-        />
-      </mat-form-field>
-      <br/>
       <mat-form-field>
         <input
           type="text"
