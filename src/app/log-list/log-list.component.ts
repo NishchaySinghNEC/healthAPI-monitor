@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DetaildiaComponent } from '../detaildia/detaildia.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogConfig } from '@angular/cdk/dialog';
+import { ENDPOINTS } from 'src/app/url-constants'
 
 
 export interface TableElement {
@@ -101,7 +102,7 @@ export class LogListComponent implements AfterViewInit {
   dialogRef: any;
   constructor(public dialog: MatDialog) { }
 
-  application = ['Provider portal', 'Public portal', 'Gateway', 'Admin Portal', 'OSRM', 'Keycloak', 'UI provider', 'UI public', 'UI admin'];
+  application = Object.keys(ENDPOINTS)
   displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'status', 'requestBody', 'responseMessage', 'details'];
   dataSource = new MatTableDataSource<TableElement>(ELEMENT_DATA);
 

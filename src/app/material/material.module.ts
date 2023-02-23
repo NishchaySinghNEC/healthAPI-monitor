@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 
 const materialComponents = [
@@ -26,7 +27,9 @@ const materialComponents = [
   MatToolbarModule,
   MatIconModule,
   MatDialogModule,
-  ClipboardModule
+  ClipboardModule,
+  MatSelectModule,
+  MatDialogModule
 ]
 
 @NgModule({

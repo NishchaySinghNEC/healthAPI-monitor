@@ -17,6 +17,9 @@ import { TabsComponent } from './tabs/tabs.component';
 import { MaterialModule } from './material/material.module';
 import { DetaildiaComponent } from './detaildia/detaildia.component';
 import { FormsModule } from '@angular/forms';
+import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,16 @@ import { FormsModule } from '@angular/forms';
     TabsComponent,
     DetaildiaComponent,
    
+    AddEditFormComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
