@@ -9,4 +9,5 @@
 #clipboard-example-textarea{
     height: auto;
     width: auto;
+    max-width:100%;
 }
