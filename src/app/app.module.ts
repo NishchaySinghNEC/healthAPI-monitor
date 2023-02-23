@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -12,6 +13,8 @@ import { TabsComponent } from './tabs/tabs.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MaterialModule } from './material/material.module';
+import { DetaildiaComponent } from './detaildia/detaildia.component';
+import { FormsModule } from '@angular/forms';
 import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     ErrorpageComponent,
     TabsComponent,
+    DetaildiaComponent,
+   
     AddEditFormComponent
   ],
   imports: [
@@ -31,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],

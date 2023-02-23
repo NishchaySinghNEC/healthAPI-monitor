@@ -1,0 +1,10 @@
+#clipboard-example-textarea{
+    height: auto;
+    width: auto;
+}
+
+.custom-button-theme{
+    background-color:  #d73e4d;
+    font-size: 15px;
+    color: white;
+}
