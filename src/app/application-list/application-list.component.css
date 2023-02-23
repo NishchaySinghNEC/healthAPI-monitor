@@ -10,3 +10,7 @@
 .warn{
     color: #f44336
 }
+
+mat-icon{
+    cursor: pointer
+}

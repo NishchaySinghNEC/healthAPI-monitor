@@ -7,5 +7,5 @@ export const ENDPOINTS = {
     'Key_Cloak':{url:'https://signin.housing-dp.dev/auth/health'},
     'UI_Provider':{url:'https://northshirecc-qa.housing-dp.dev/health.json'},
     'UI_Admin':{url:'https://northshirecc-qa.housing-dp.dev/health.json'},
-    'UI Public':{url:''}
+    'UI_Public':{url:''}
 }

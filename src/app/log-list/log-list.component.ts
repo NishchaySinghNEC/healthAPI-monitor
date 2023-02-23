@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ENDPOINTS } from 'src/app/url-constants'
 
 
 export interface TableElement {
@@ -96,7 +97,7 @@ const ELEMENT_DATA: TableElement[] = [
 })
 export class LogListComponent implements AfterViewInit {
 
-  application = ['Provider portal', 'Public portal', 'Gateway', 'Admin Portal', 'OSRM', 'Keycloak', 'UI provider', 'UI public', 'UI admin'];
+  application = Object.keys(ENDPOINTS)
   displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'status', 'requestBody', 'responseMessage', 'details'];
   dataSource = new MatTableDataSource<TableElement>(ELEMENT_DATA);
 
