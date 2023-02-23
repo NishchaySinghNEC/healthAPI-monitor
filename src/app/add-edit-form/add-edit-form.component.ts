@@ -48,8 +48,10 @@ export class AddEditFormComponent implements OnInit {
       let formData: ApplicationFormData = this.applicationDetail.value 
       const appName = formData.applicationName
       const url = formData.url
-      let endpointData = {...ENDPOINTS}
-      endpointData[appName] = {'url': url}
+      let endpointData = [...ENDPOINTS]
+      const ind = endpointData.findIndex(ep=>ep.applicationName==appName)
+      endpointData[ind] = {...endpointData[ind],url}
+
       localStorage.setItem('ENDPOINTS', JSON.stringify(endpointData))
       this.dialogRef.close(endpointData)
     }

@@ -19,13 +19,12 @@ export interface TableElement {
 
 export class ApplicationListComponent implements OnInit {
 
-  elementData = Object.keys(ENDPOINTS)
+  elementData  = localStorage.getItem('ENDPOINTS')?JSON.parse(localStorage.getItem('ENDPOINTS')||'{}'):[...ENDPOINTS];
 
   constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.apiSrv.apiCheckCall(ENDPOINTS.Provider_Portal.url).subscribe(data=>console.log(data),
-    err=>console.log(err)
+    this.apiSrv.apiCheckCall(ENDPOINTS[0].url).subscribe(data=>console.log(data)
     )
   }
 
