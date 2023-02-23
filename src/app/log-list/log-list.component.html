@@ -4,13 +4,8 @@
       <div class="p-4 rounded">
         <mat-card>
           <mat-card-content>
-            <mat-form-field class="center">
-              <mat-label>Select Application</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let app of application" [value]="app">
-                  {{app}}
-                </mat-option>
-              </mat-select>
+            <mat-form-field class="center" appearance="standard">
+              <input type="number" placeholder="Log Limit" matInput>
             </mat-form-field>
           </mat-card-content>
         </mat-card>
