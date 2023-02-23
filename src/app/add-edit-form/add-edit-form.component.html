@@ -1,3 +1,30 @@
-<h3 mat-dialog-title>Application Form</h3>
-<form [formGroup]="applicationDetail" (ngSubmit)="onSubmit()">
-</form>
+<mat-card>
+  <form [formGroup]="applicationDetail" (ngSubmit)="onSubmit()">
+    <mat-card-header>
+      <mat-card-title>Application Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input
+          type="text"
+          placeholder="Application name"
+          formControlName="applicationName"
+          matInput
+        />
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input
+          type="text"
+          placeholder="Enter URL"
+          formControlName="url"
+          matInput
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="submit" color="primary" mat-dialog-close>Submit</button>
+      <button mat-button color="warn" mat-dialog-close>Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
