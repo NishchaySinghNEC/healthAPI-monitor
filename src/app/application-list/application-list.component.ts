@@ -33,11 +33,15 @@ export class ApplicationListComponent implements OnInit {
     return statusCode === 200 ? 'primary-green' : 'warn'
   }
 
-  openDialog(){
+  openDialog(elementData: string){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
-      data: {name: 'nishchay', age:'22'}
+      data: elementData,
+      disableClose: true
     });
-
-    
+    dialofRef.afterClosed().subscribe(result=>{
+      if(result){
+        this.elementData = Object.keys(result)
+      }
+    })
   }
 }

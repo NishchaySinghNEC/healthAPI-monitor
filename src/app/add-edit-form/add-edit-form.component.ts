@@ -1,6 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ENDPOINTS } from '../url-constants';
+
+export interface ApplicationFormData{
+  applicationName: string;
+  url: string;
+}
 
 export class Address {
   constructor(
@@ -22,20 +28,30 @@ export class AddEditFormComponent implements OnInit {
 
   applicationDetail!: FormGroup
 
-  constructor( public dialogRef: MatDialogRef<AddEditFormComponent>, 
+  constructor(public dialogRef: MatDialogRef<AddEditFormComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public fb: FormBuilder) { 
-      this.applicationDetail = this.fb.group({
-        applicationName: ['', [Validators.required]],
-        link: ['', [Validators.required]]
-      })
-    }    
+    public fb: FormBuilder) {}    
 
   ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm(){
+    this.applicationDetail = this.fb.group({
+      applicationName: [this.data, [Validators.required]],
+      url: [ENDPOINTS[this.data].url, [Validators.required]]
+    })
   }
 
   onSubmit() {
-    alert('Thanks for submitting! Data: ');
+    if(this.applicationDetail.valid){
+      let formData: ApplicationFormData = this.applicationDetail.value 
+      const appName = formData.applicationName
+      const url = formData.url
+      let endpointData = {...ENDPOINTS}
+      endpointData[appName] = {'url': url}
+      localStorage.setItem('ENDPOINTS', JSON.stringify(endpointData))
+      this.dialogRef.close(endpointData)
+    }
   }
-
 }
