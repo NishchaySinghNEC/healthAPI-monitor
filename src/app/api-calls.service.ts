@@ -12,8 +12,8 @@ export class ApiCallsService {
 
   constructor( private http: HttpClient) { }
 
-
   public apiCheckCall(url:string){
-    return this.http.get<any>(ENDPOINTS.Provider_Portal.url, {observe: 'response'})
+    return this.http.get<any>(url,
+      {observe:'response'})
   }
 }

@@ -2,8 +2,8 @@
   <div class="col-sm-4 p-2" *ngFor="let element of elementData">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>{{element}}</mat-card-title>
-        <mat-icon fontIcon="edit" (click)="openDialog()"></mat-icon>
+        <mat-card-title>{{element.applicationName}}</mat-card-title>
+        <mat-icon fontIcon="edit" (click)="openDialog(element)"></mat-icon>
       </mat-card-header>
       <mat-card-actions>
         <button mat-button [class]="textColor(200)">200</button>

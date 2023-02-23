@@ -6,14 +6,17 @@ import { MatTableModule } from '@angular/material/table';
 
 import {Component} from '@angular/core';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
+
 import { LogListComponent } from './log-list/log-list.component';
 import { ApplicationListComponent } from './application-list/application-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { AppRoutingModule } from './app-routing.module';
+
 import { MaterialModule } from './material/material.module';
 import { DetaildiaComponent } from './detaildia/detaildia.component';
 import { FormsModule } from '@angular/forms';
