@@ -1,20 +1,31 @@
-<div class="mx-2">
-  <mat-form-field class="mx-2" appearance="standard">
-    <input type="number" placeholder="Log limit" matInput>
-  </mat-form-field>
-  <mat-form-field class="mx-2" appearance="standard">
-    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-      <input matStartDate formControlName="start" placeholder="Start date">
-      <input matEndDate formControlName="end" placeholder="End date">
-    </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  
-    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-  </mat-form-field>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <button class="mx-2" mat-raised-button>Get logs</button>
+<div class="mx-2 center">
+  <form [formGroup]="logDetails" (ngSubmit)="getLogss()">
+    <mat-form-field class="mx-2" appearance="standard">
+      <input type="number" min="0" placeholder="Log limit" formControlName="logLimit" matInput>
+    </mat-form-field>
+    <mat-form-field class="mx-2" appearance="standard">
+      <mat-label>Choose an option</mat-label>
+      <mat-select formControlName="requestMethod">
+        <mat-option *ngFor="let request of requestMethodList" [value]="request">{{request}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="mx-2" appearance="standard">
+      <input type="text" placeholder="Status code" formControlName="statusCode" matInput>
+    </mat-form-field>
+    <mat-form-field class="mx-2" appearance="standard">
+      <mat-date-range-input formGroupName="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    
+      <mat-error *ngIf="startDate?.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="endDate?.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <button class="mx-2" type="submit" mat-raised-button>Get logs</button>
+  </form>
 </div>
 
 <div class="mat-elevation-z8 mx-2 mt-1">
