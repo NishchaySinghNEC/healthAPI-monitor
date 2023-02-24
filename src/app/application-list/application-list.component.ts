@@ -34,12 +34,12 @@ export class ApplicationListComponent implements OnInit {
   private handleError(error: HttpErrorResponse,i:number) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
-      this.elementData[i].info =  `a client side or network error occured`+"  >>>>>error is " + error.error
+      this.elementData[i].info =  `a client side or network error occured`+"  >>>>>error is " + error.error.type
       console.error('An error occurred:sss', error.error);
     }
     else if (error.status===200) {
       //if url not present
-      if(this.elementData[i].url==='')this.elementData[i].status = 'NO URL PRESENT'
+      if(this.elementData[i].url===''){this.elementData[i].status = 'NO URL PRESENT'; this.elementData[i].info='please add api url'}
       else this.elementData[i].status = 'SUCCESS'
       //console.log(error.error)
     }
