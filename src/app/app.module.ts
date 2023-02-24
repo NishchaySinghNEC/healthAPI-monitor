@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ShowMoreDialogComponent } from './show-more-dialog/show-more-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     TabsComponent,
     DetaildiaComponent,
    
-    AddEditFormComponent
+    AddEditFormComponent,
+         ShowMoreDialogComponent
   ],
   imports: [
     BrowserModule,

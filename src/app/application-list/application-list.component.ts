@@ -1,7 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { catchError, throwError } from 'rxjs';
 import { AddEditFormComponent } from '../add-edit-form/add-edit-form.component';
 import { ApiCallsService } from '../api-calls.service';
+import { ShowMoreDialogComponent } from '../show-more-dialog/show-more-dialog.component';
 import { ENDPOINTS } from '../url-constants';
 
 
@@ -25,23 +28,41 @@ export class ApplicationListComponent implements OnInit {
 
   ngOnInit(): void {
     for(let i = 0; i<ENDPOINTS.length; i++){
-      this.apiSrv.apiCheckCall(ENDPOINTS[i].url).subscribe(data=>{
-        console.log(data)
-        if(data.ok){
-          this.elementData[i].status = 'SUCCESS'
-        }
-        else{
-          this.elementData[i].status = 'FAIL'
-        }
-      }
-      )  
+      this.apiSrv.apiCheckCall(ENDPOINTS[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
     }
   }
-
+  private handleError(error: HttpErrorResponse,i:number) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      this.elementData[i].info =  `a client side or network error occured`+"  >>>>>error is " + error.error
+      console.error('An error occurred:sss', error.error);
+    }
+    else if (error.status===200) {
+      //if url not present
+      if(this.elementData[i].url==='')this.elementData[i].status = 'NO URL PRESENT'
+      else this.elementData[i].status = 'SUCCESS'
+      //console.log(error.error)
+    }
+     else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+     
+      this.elementData[i].info=  `Backend returned code ${error.status}, body was:  ${error.error}`;
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(() => new Error(''));
+  }
+  
   textColor(statusCode: string){
     return statusCode === 'SUCCESS' ? 'primary-green' : 'warn'
   }
 
+  showMoreInfo(element:string) {
+    console.log(element)
+    this.dialog.open(ShowMoreDialogComponent,{
+      data: element,
+    });
+  }
   openDialog(elementData: string){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
       data: [elementData,this.elementData],
