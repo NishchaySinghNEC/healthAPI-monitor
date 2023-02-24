@@ -62,28 +62,28 @@
     <!-- time Column -->
     <ng-container matColumnDef="time">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
-      <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.elapsedTime }}</td>
     </ng-container>
 
     <!-- uri Column -->
     <ng-container matColumnDef="uri">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>URL</th>
-      <td mat-cell *matCellDef="let element">{{ element.uri }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>URI</th>
+      <td mat-cell *matCellDef="let element">{{ element.requestUri }}</td>
     </ng-container>
 
     <!-- status Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.responseStatus }}</td>
     </ng-container>
 
     <!-- request body Column -->
-    <ng-container matColumnDef="requestBody">
+    <!-- <ng-container matColumnDef="requestBody">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Request Body
       </th>
       <td mat-cell *matCellDef="let element">{{ element.requestBody }}</td>
-    </ng-container>
+    </ng-container> -->
 
     <!-- response message Column -->
     <ng-container matColumnDef="responseMessage">

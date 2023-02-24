@@ -4,95 +4,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DetaildiaComponent } from '../detaildia/detaildia.component';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogConfig } from '@angular/cdk/dialog';
 import { ENDPOINTS } from 'src/app/url-constants'
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
-
-export interface TableElement {
-  id: string;
-  startDate: string;
-  endDate: string;
-  time: string;
-  uri: string;
-  status: string;
-  requestBody: string;
-  responseMessage: string;
-  details: string;
-}
-
-const ELEMENT_DATA: TableElement[] = [
-  { id: '1',
-    startDate: '11-11-2011',
-    endDate: '11-11-2011',
-    time: '11:11',
-    uri: '121212',
-    status: '200',
-    requestBody: 'request',
-    responseMessage: 'hello',
-    details: 'details'
-  },
-  { id: '2',
-    startDate: '11-11-2011',
-    endDate: '11-11-2011',
-    time: '11:11',
-    uri: '121212',
-    status: '400',
-    requestBody: 'request',
-    responseMessage: 'hello',
-    details: 'details'
-  },
-  { id: '2',
-    startDate: '11-11-2011',
-    endDate: '11-11-2011',
-    time: '11:11',
-    uri: '121212',
-    status: '400',
-    requestBody: 'request',
-    responseMessage: 'hello',
-    details: 'details'
-  },
-  { id: '2',
-    startDate: '11-11-2011',
-    endDate: '11-11-2011',
-    time: '11:11',
-    uri: '121212',
-    status: '400',
-    requestBody: 'request',
-    responseMessage: 'hello',
-    details: 'details'
-  },
-  { id: '2',
-    startDate: '11-11-2011',
-    endDate: '11-11-2011',
-    time: '11:11',
-    uri: '121212',
-    status: '400',
-    requestBody: 'request',
-    responseMessage: 'hello',
-    details: 'details'
-  },
-  { id: '2',
-    startDate: '11-11-2011',
-    endDate: '11-11-2011',
-    time: '11:11',
-    uri: '121212',
-    status: '400',
-    requestBody: 'request',
-    responseMessage: 'hello',
-    details: 'details'
-  },
-  { id: '2',
-    startDate: '11-11-2011',
-    endDate: '11-11-2011',
-    time: '11:11',
-    uri: '121212',
-    status: '400',
-    requestBody: 'request',
-    responseMessage: 'hello',
-    details: 'details'
-  },
-];
+import { ApiCallsService } from '../api-calls.service';
+import { LogInterface } from '../log-interface';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-log-list',
@@ -132,8 +47,8 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   application = Object.keys(ENDPOINTS)
-  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'status', 'requestBody', 'responseMessage', 'details'];
-  dataSource = new MatTableDataSource<TableElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'status', 'responseMessage', 'details'];
+  dataSource = new MatTableDataSource<LogInterface>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -152,8 +67,6 @@ export class LogListComponent implements OnInit, AfterViewInit {
     });
 }
 
-
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -163,7 +76,9 @@ export class LogListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  
-
+  getLogs(){
+    const url: string = "http://localhost:9000/api-access-log?limit=10&requestMethod=POST&responseStatus=500"
+    this.callLogService.callLog(url).subscribe(data => this.dataSource.data = data)    
+  }
   
 }
