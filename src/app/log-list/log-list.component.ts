@@ -76,8 +76,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
   getLogs(){
     let formData: LogFormInterface = this.logDetails.value
     const logLimit = formData.logLimit ? formData.logLimit : 100;
-    const url: string = `http://localhost:9000/api-access-log?limit=${logLimit}&requestMethod=&responseStatus=500`
+    const url: string = `http://localhost:9000/api-access-log?limit=${logLimit}&requestMethod=${formData.requestMethod}&responseStatus=${formData.responseStatus}`
     this.callLogService.callLog(url).subscribe(data => this.dataSource.data = data)    
-  }
-  
+  } 
 }
