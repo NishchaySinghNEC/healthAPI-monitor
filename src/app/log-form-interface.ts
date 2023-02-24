@@ -1,9 +1,9 @@
 export interface LogFormInterface {
-    logLimit : number;
+    limit : number;
     requestMethod: string;
     responseStatus: string;
     range: {
-        start: string;
-        end: string;
+        startDate: string;
+        endDate: string;
     }
 }

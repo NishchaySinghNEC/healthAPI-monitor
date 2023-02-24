@@ -33,10 +33,10 @@ export class LogListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.logDetails = this.fb.group({
-      logLimit: [null],
+      limit: [null],
       range: this.fb.group({
-        start: [null],
-        end: [null]
+        startDate: [null],
+        endDate: [null]
       }),
       requestMethod: [null],
       responseStatus: [null],
@@ -73,10 +73,35 @@ export class LogListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getLogs(){
+  appendUrlParams(): string{
+    let url = 'http://localhost:9000/api-access-log?'
     let formData: LogFormInterface = this.logDetails.value
-    const logLimit = formData.logLimit ? formData.logLimit : 100;
-    const url: string = `http://localhost:9000/api-access-log?limit=${logLimit}&requestMethod=${formData.requestMethod}&responseStatus=${formData.responseStatus}`
+    console.log(formData);
+    
+    const paramsList = []
+    const limit = formData.limit ? formData.limit : 100;
+    if(limit){
+      paramsList.push(`limit=${limit}`);
+    }
+    if(formData.requestMethod){
+      paramsList.push(`requestMethod=${formData.requestMethod}`);
+    }
+    if(formData.responseStatus){
+      paramsList.push(`responseStatus=${formData.responseStatus}`);
+    }
+    if(formData.range.startDate){
+      paramsList.push(`startDate=${formData.range.startDate}`);
+    }
+    if(formData.range.endDate){
+      paramsList.push(`endDate=${formData.range.endDate}`);
+    }
+    console.log(url + paramsList.join('&'));
+    
+    return url + paramsList.join('&')
+  }
+
+  getLogs(){
+    const url: string = this.appendUrlParams()
     this.callLogService.callLog(url).subscribe(data => this.dataSource.data = data)    
   } 
 }

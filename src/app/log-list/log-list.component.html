@@ -1,7 +1,7 @@
 <div class="mx-2 center">
   <form [formGroup]="logDetails" (ngSubmit)="getLogs()">
     <mat-form-field class="mx-2" appearance="standard">
-      <input type="number" min="0" placeholder="Log limit" formControlName="logLimit" matInput>
+      <input type="number" min="0" placeholder="Log limit" formControlName="limit" matInput>
     </mat-form-field>
     <mat-form-field class="mx-2" appearance="standard">
       <mat-label>Choose an option</mat-label>
@@ -14,8 +14,8 @@
     </mat-form-field>
     <mat-form-field class="mx-2" appearance="standard">
       <mat-date-range-input formGroupName="range" [rangePicker]="picker">
-        <input matStartDate formControlName="start" placeholder="Start date">
-        <input matEndDate formControlName="end" placeholder="End date">
+        <input matStartDate formControlName="startDate" placeholder="Start date">
+        <input matEndDate formControlName="endDate" placeholder="End date">
       </mat-date-range-input>
       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
       <mat-date-range-picker #picker></mat-date-range-picker>
