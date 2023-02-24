@@ -44,7 +44,7 @@ export class ApplicationListComponent implements OnInit {
 
   openDialog(elementData: string){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
-      data: elementData,
+      data: [elementData,this.elementData],
       disableClose: true
     });
     dialofRef.afterClosed().subscribe(result=>{
