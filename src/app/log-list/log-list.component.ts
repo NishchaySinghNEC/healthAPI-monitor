@@ -6,6 +6,7 @@ import { DetaildiaComponent } from '../detaildia/detaildia.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogConfig } from '@angular/cdk/dialog';
 import { ENDPOINTS } from 'src/app/url-constants'
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 export interface TableElement {
@@ -100,6 +101,12 @@ const ELEMENT_DATA: TableElement[] = [
 })
 export class LogListComponent implements AfterViewInit {
   dialogRef: any;
+  
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
   constructor(public dialog: MatDialog) { }
 
   application = Object.keys(ENDPOINTS)
@@ -108,8 +115,6 @@ export class LogListComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  
- 
 
 
   ngAfterViewInit() {

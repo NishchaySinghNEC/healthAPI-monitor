@@ -14,6 +14,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 const materialComponents = [
   MatSlideToggleModule,
@@ -31,7 +33,9 @@ const materialComponents = [
   ClipboardModule,
   MatSelectModule,
   MatDialogModule,
-  MatGridListModule
+  MatGridListModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ]
 
 @NgModule({
