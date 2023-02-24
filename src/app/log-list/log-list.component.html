@@ -1,5 +1,5 @@
 <div class="mx-2 center">
-  <form [formGroup]="logDetails" (ngSubmit)="getLogss()">
+  <form [formGroup]="logDetails" (ngSubmit)="getLogs()">
     <mat-form-field class="mx-2" appearance="standard">
       <input type="number" min="0" placeholder="Log limit" formControlName="logLimit" matInput>
     </mat-form-field>
@@ -10,7 +10,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field class="mx-2" appearance="standard">
-      <input type="text" placeholder="Status code" formControlName="statusCode" matInput>
+      <input type="text" placeholder="Status code" formControlName="responseStatus" matInput>
     </mat-form-field>
     <mat-form-field class="mx-2" appearance="standard">
       <mat-date-range-input formGroupName="range" [rangePicker]="picker">

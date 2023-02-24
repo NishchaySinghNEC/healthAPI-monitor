@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ENDPOINTS } from 'src/app/url-constants'
 import { ApiCallsService } from '../api-calls.service';
 import { LogInterface } from '../log-interface';
+import { LogFormInterface } from '../log-form-interface';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -16,11 +17,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class LogListComponent implements OnInit, AfterViewInit {
   dialogRef: any;
-  requestMethodList: string[] = ['GET', 'POST', 'PUT', 'DELETE']
+  ELEMENT_DATA!: LogInterface[];
+  requestMethodList: string[] = ['GET', 'POST', 'PUT', 'DELETE'];
+  logDetails!: FormGroup;
 
-  logDetails!: FormGroup
-
-  constructor(public dialog: MatDialog, private fb: FormBuilder) { }
+  constructor(public dialog: MatDialog, private callLogService: ApiCallsService ,private fb: FormBuilder) { }
 
   get startDate(){
     return this.logDetails.get('range')?.get('start')
@@ -28,10 +29,6 @@ export class LogListComponent implements OnInit, AfterViewInit {
 
   get endDate(){
     return this.logDetails.get('range')?.get('end')
-  }
-
-  getLogss(){
-    console.log(this.logDetails.value)
   }
 
   ngOnInit() {
@@ -42,7 +39,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
         end: [null]
       }),
       requestMethod: [null],
-      statusCode: [null],
+      responseStatus: [null],
     })
   }
 
@@ -77,7 +74,9 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   getLogs(){
-    const url: string = "http://localhost:9000/api-access-log?limit=10&requestMethod=POST&responseStatus=500"
+    let formData: LogFormInterface = this.logDetails.value
+    const logLimit = formData.logLimit ? formData.logLimit : 100;
+    const url: string = `http://localhost:9000/api-access-log?limit=${logLimit}&requestMethod=&responseStatus=500`
     this.callLogService.callLog(url).subscribe(data => this.dataSource.data = data)    
   }
   
