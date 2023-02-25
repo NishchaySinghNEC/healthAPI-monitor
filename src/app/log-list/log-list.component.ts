@@ -21,6 +21,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
   ELEMENT_DATA!: LogInterface[];
   requestMethodList: string[] = ['GET', 'POST', 'PUT', 'DELETE'];
   logDetails!: FormGroup;
+  show = false
 
   constructor(public dialog: MatDialog, private callLogService: ApiCallsService ,private fb: FormBuilder, public datepipe: DatePipe) { }
 
@@ -58,13 +59,21 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(id: string, createdDate: string) {
+    let dialogData: any
+    this.show = true
     let url = `http://localhost:9000/api-access-log/${id}?createdDate=${createdDate}`
-    this.callLogService.callLogDetails(url).subscribe(data=> console.log(data))
-    this.dialogRef=this.dialog.open(DetaildiaComponent,{
-      height: '70%',
-      width: '60%',
+    this.callLogService.callLogDetails(url).subscribe({
+      next: (data) => dialogData = data,
+      complete: () => {
+        this.show = false;
+        this.dialogRef=this.dialog.open(DetaildiaComponent,{
+          height: '70%',
+          width: '60%',
+          data: dialogData
+        });
+      }
       
-    });
+    })
 }
 
   applyFilter(event: Event) {
@@ -101,8 +110,12 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   getLogs(){
+    this.show = true
     const url: string = this.appendUrlParams()
-    this.callLogService.callLog(url).subscribe(data => this.dataSource.data = data)    
+    this.callLogService.callLog(url).subscribe({
+      next: (data) => this.dataSource.data = data,
+      complete: () => this.show = false
+    })    
   }
   
 }

@@ -15,7 +15,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const materialComponents = [
   MatSlideToggleModule,
@@ -36,6 +37,7 @@ const materialComponents = [
   MatGridListModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({

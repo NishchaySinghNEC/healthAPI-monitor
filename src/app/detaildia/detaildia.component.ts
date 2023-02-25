@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-detaildia',
@@ -7,12 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetaildiaComponent implements OnInit {
 
-  value =
-  `Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not ` +
-  `a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord ` +
-  `of the Sith, so powerful and so wise he could use the Force to influence the `;
+  value: any
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<DetaildiaComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
 
   ngOnInit(): void {
   }
