@@ -1,13 +1,14 @@
-
-
 .custom-button-theme{
     background-color:  #3e73d7;
     font-size: 15px;
     color: white;
 }
 
-#clipboard-example-textarea{
-    height: auto;
-    width: auto;
-    max-width:100%;
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+textarea{
+    background: #f5f5f5;;
 }

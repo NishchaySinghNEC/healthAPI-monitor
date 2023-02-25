@@ -18,4 +18,8 @@ export class ApiCallsService {
   public callLog(url:string): Observable<LogInterface[]>{
     return this.http.get<LogInterface[]>(url)
   }
+
+  public callLogDetails(url:string): Observable<any>{
+    return this.http.get<any>(url)
+  }
 }

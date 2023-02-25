@@ -57,7 +57,9 @@ export class LogListComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  openDialog() {
+  openDialog(id: string, createdDate: string) {
+    let url = `http://localhost:9000/api-access-log/${id}?createdDate=${createdDate}`
+    this.callLogService.callLogDetails(url).subscribe(data=> console.log(data))
     this.dialogRef=this.dialog.open(DetaildiaComponent,{
       height: '70%',
       width: '60%',
@@ -77,10 +79,9 @@ export class LogListComponent implements OnInit, AfterViewInit {
   appendUrlParams(): string{
     let url = 'http://localhost:9000/api-access-log?'
     let formData: LogFormInterface = this.logDetails.value
-    console.log(formData);
-    
     const paramsList = []
     const limit = formData.limit ? formData.limit : 100;
+
     if(limit){
       paramsList.push(`limit=${limit}`);
     }
@@ -96,13 +97,12 @@ export class LogListComponent implements OnInit, AfterViewInit {
     if(formData.range.endDate){
       paramsList.push(`endDate=${this.datepipe.transform(formData.range.endDate, 'yyyy-MM-dd HH:mm:ss.mms')}`);
     }
-    console.log(url + paramsList.join('&'));
-    
     return url + paramsList.join('&')
   }
 
   getLogs(){
     const url: string = this.appendUrlParams()
     this.callLogService.callLog(url).subscribe(data => this.dataSource.data = data)    
-  } 
+  }
+  
 }
