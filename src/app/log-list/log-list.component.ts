@@ -9,6 +9,7 @@ import { ApiCallsService } from '../api-calls.service';
 import { LogInterface } from '../log-interface';
 import { LogFormInterface } from '../log-form-interface';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-log-list',
@@ -21,7 +22,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
   requestMethodList: string[] = ['GET', 'POST', 'PUT', 'DELETE'];
   logDetails!: FormGroup;
 
-  constructor(public dialog: MatDialog, private callLogService: ApiCallsService ,private fb: FormBuilder) { }
+  constructor(public dialog: MatDialog, private callLogService: ApiCallsService ,private fb: FormBuilder, public datepipe: DatePipe) { }
 
   get startDate(){
     return this.logDetails.get('range')?.get('start')
@@ -90,10 +91,10 @@ export class LogListComponent implements OnInit, AfterViewInit {
       paramsList.push(`responseStatus=${formData.responseStatus}`);
     }
     if(formData.range.startDate){
-      paramsList.push(`startDate=${formData.range.startDate}`);
+      paramsList.push(`startDate=${this.datepipe.transform(formData.range.startDate, 'yyyy-MM-dd HH:mm:ss.mms')}`);
     }
     if(formData.range.endDate){
-      paramsList.push(`endDate=${formData.range.endDate}`);
+      paramsList.push(`endDate=${this.datepipe.transform(formData.range.endDate, 'yyyy-MM-dd HH:mm:ss.mms')}`);
     }
     console.log(url + paramsList.join('&'));
     

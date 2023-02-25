@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DatePipe } from '@angular/common';
 
 import { MaterialModule } from './material/material.module';
 import { DetaildiaComponent } from './detaildia/detaildia.component';
@@ -42,7 +43,7 @@ import { ShowMoreDialogComponent } from './show-more-dialog/show-more-dialog.com
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
