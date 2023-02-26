@@ -64,6 +64,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
     let url = `http://localhost:9000/api-access-log/${id}?createdDate=${createdDate}`
     this.callLogService.callLogDetails(url).subscribe({
       next: (data) => dialogData = data,
+      error: () => this.show = false,
       complete: () => {
         this.show = false;
         this.dialogRef=this.dialog.open(DetaildiaComponent,{
@@ -114,6 +115,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
     const url: string = this.appendUrlParams()
     this.callLogService.callLog(url).subscribe({
       next: (data) => this.dataSource.data = data,
+      error: () => this.show = false,
       complete: () => this.show = false
     })    
   }
