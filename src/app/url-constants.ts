@@ -1,11 +1,11 @@
 export const ENDPOINTS = [
     {applicationName:'Provider Portal',url:'https://api.housing-dp.dev/provider/healthcheck', status:'FAIL',info:''},
     {applicationName:'Public Portal' , url:'https://api.housing-dp.dev/public/healthcheck',status:'FAIL',info:''},
-    {applicationName:'Gateway',url:'',status:'FAIL',info:''},
-    {applicationName:'Admin Portal',url:'',status:'FAIL',info:''},
-    {applicationName:'OSRM',url:'',status:'FAIL',info:''},
+    {applicationName:'Gateway',url:'http://10.146.17.14:3000/api/healthcheck.json',status:'FAIL',info:''},
+    {applicationName:'Admin Portal',url:' https://api.housing-dp.dev/admin/healthcheck',status:'FAIL',info:''},
+    {applicationName:'OSRM',url:'https://nominatim.openstreetmap.org/search',status:'FAIL',info:''},
     {applicationName:'Key Cloak',url:'https://signin.housing-dp.dev/auth/health',status:'FAIL',info:''},
-    {applicationName:'UI Provider',url:'https://northshirecc-qa.housing-dp.dev/health.json',status:'FAIL',info:''},
-    {applicationName:'UI Admin',url:'https://northshirecc-qa.housing-dp.dev/health.json',status:'FAIL',info:''},
-    {applicationName:'UI Public',url:'',status:'FAIL',info:''}
+    {applicationName:'UI Provider',url:'https://provider-qa.housing-dp.dev/#/system-admin/general/users',status:'FAIL',info:''},
+    {applicationName:'UI Admin',url:'https://admin-qa.housing-dp.dev/#/system-admin/general/users',status:'FAIL',info:''},
+    {applicationName:'UI Public',url:'https://northshirecc-qa.housing-dp.dev/health.json',status:'FAIL',info:''}
 ]
