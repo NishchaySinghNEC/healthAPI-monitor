@@ -8,13 +8,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DetaildiaComponent implements OnInit {
 
-  value: any
+  stackTrace!: string
+  requestBody!: string
+  value=''
 
   constructor(public dialogRef: MatDialogRef<DetaildiaComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit(): void {
+    console.log(this.data);
+    
+    this.stackTrace, this.requestBody = this.data  
   }
-
 }

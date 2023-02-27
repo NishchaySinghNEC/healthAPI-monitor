@@ -58,23 +58,14 @@ export class LogListComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  openDialog(id: string, createdDate: string) {
-    let dialogData: any
+  openDialog(stackTrace: string, requestBody: string) {
+    let dialogData: any = [stackTrace, requestBody]
     this.show = true
-    let url = `http://localhost:9000/api-access-log/${id}?createdDate=${createdDate}`
-    this.callLogService.callLogDetails(url).subscribe({
-      next: (data) => dialogData = data,
-      error: () => this.show = false,
-      complete: () => {
-        this.show = false;
-        this.dialogRef=this.dialog.open(DetaildiaComponent,{
-          height: '70%',
-          width: '60%',
-          data: dialogData
-        });
-      }
-      
-    })
+   this.dialogRef=this.dialog.open(DetaildiaComponent,{
+    height: '70%',
+    width: '60%',
+    data: dialogData
+  });
 }
 
   applyFilter(event: Event) {

@@ -27,8 +27,8 @@ export class ApplicationListComponent implements OnInit {
   constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    for(let i = 0; i<ENDPOINTS.length; i++){
-      this.apiSrv.apiCheckCall(ENDPOINTS[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
+    for(let i = 0; i<this.elementData.length; i++){
+      this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
     }
   }
   private handleError(error: HttpErrorResponse,i:number) {
@@ -47,6 +47,7 @@ export class ApplicationListComponent implements OnInit {
       // The response body may contain clues as to what went wrong.
      
       this.elementData[i].info=  `Backend returned code ${error.status}, body was:  ${error.error}`;
+      this.elementData[i].status = 'FAIL'
     }
     // Return an observable with a user-facing error message.
     return throwError(() => new Error(''));
