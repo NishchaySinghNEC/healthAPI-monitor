@@ -8,7 +8,7 @@ import { ENDPOINTS } from 'src/app/url-constants'
 import { ApiCallsService } from '../api-calls.service';
 import { LogInterface } from '../log-interface';
 import { LogFormInterface } from '../log-form-interface';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -37,7 +37,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
     this.logDetails = this.fb.group({
       limit: [null],
       range: this.fb.group({
-        startDate: [null],
+        startDate: [null, Validators.required],
         endDate: [null]
       }),
       requestMethod: [null],
@@ -102,6 +102,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   getLogs(){
+    if (!this.logDetails.valid) return;
     this.show = true
     const url: string = this.appendUrlParams()
     this.callLogService.callLog(url).subscribe({

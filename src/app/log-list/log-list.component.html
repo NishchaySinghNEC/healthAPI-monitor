@@ -21,7 +21,7 @@
       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
       <mat-date-range-picker #picker></mat-date-range-picker>
     
-      <mat-error *ngIf="startDate?.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="startDate?.hasError('matStartDateInvalid') || startDate?.hasError('required')">Invalid start date</mat-error>
       <mat-error *ngIf="endDate?.hasError('matEndDateInvalid')">Invalid end date</mat-error>
     </mat-form-field>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
