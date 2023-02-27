@@ -1,3 +1,8 @@
-::ng-deep .mat-tab-labels {
+
+.mat-tab-labels {
   justify-content: center;
+}
+.mat-tab-label {
+  font-size: 18px;
+  font-weight: 700;
 }

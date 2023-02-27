@@ -22,14 +22,19 @@ export interface TableElement {
 
 export class ApplicationListComponent implements OnInit {
 
-  elementData  = localStorage.getItem('ENDPOINTS')?JSON.parse(localStorage.getItem('ENDPOINTS')||'{}'):[...ENDPOINTS];
+  elementData:any[]  = localStorage.getItem('ENDPOINTS')?JSON.parse(localStorage.getItem('ENDPOINTS')||'{}'):[...ENDPOINTS];
 
   constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     for(let i = 0; i<this.elementData.length; i++){
-      this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
+      this.checkStatus(i)
+      // this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
     }
+  }
+
+  private checkStatus(i:number) {
+    this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})    
   }
   private handleError(error: HttpErrorResponse,i:number) {
     if (error.status === 0) {
@@ -62,7 +67,13 @@ export class ApplicationListComponent implements OnInit {
       data: element,
     });
   }
-  openDialog(elementData: string){
+  refreshStatus(){
+    for(let i = 0; i<this.elementData.length; i++){
+      this.checkStatus(i)
+      // this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
+    }
+  }
+  openDialog(elementData: any){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
       data: [elementData,this.elementData],
       disableClose: true
@@ -70,6 +81,7 @@ export class ApplicationListComponent implements OnInit {
     dialofRef.afterClosed().subscribe(result=>{
       if(result){
         this.elementData = result;
+        this.refreshStatus()
       }
     })
   }
