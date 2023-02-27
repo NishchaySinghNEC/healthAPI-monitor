@@ -17,8 +17,6 @@ export class DetaildiaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.data);
-    
-    this.stackTrace, this.requestBody = this.data  
+    [this.stackTrace, this.requestBody] = this.data  
   }
 }
