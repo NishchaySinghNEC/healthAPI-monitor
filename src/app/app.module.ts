@@ -20,6 +20,7 @@ import { AddEditFormComponent } from './add-edit-form/add-edit-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShowMoreDialogComponent } from './show-more-dialog/show-more-dialog.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ShowMoreDialogComponent } from './show-more-dialog/show-more-dialog.com
     DetaildiaComponent,
    
     AddEditFormComponent,
-         ShowMoreDialogComponent
+         ShowMoreDialogComponent,
+         FooterComponent
   ],
   imports: [
     BrowserModule,
