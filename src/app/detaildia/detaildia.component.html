@@ -1,16 +1,19 @@
 <div class="container">
-  <h1 mat-dialog-title>Request body</h1>
+  <div *ngIf="stackTrace">
+  <h1 mat-dialog-title>Stack Trace</h1>
 <textarea cols="100" rows="12" [(ngModel)]="stackTrace"></textarea>
 <div mat-dialog-actions>
   <button mat-button class="mat-raised-button" color="primary" [mat-dialog-close]="false">Close</button>
   <button mat-button class="mat-raised-button" color="primary" [cdkCopyToClipboard]="value">Copy</button>
 </div>
-<br/>
-<h1 mat-dialog-title>Stack trace</h1>
+</div>
+<div *ngIf="requestBody">
+<h1 mat-dialog-title>Request Body</h1>
 <textarea cols="100" rows="12" [(ngModel)]="requestBody"></textarea>
 <div mat-dialog-actions>
   <button mat-button class="mat-raised-button" color="primary" [mat-dialog-close]="false">Close</button>
   <button mat-button class="mat-raised-button" color="primary" [cdkCopyToClipboard]="value">Copy</button>
+</div>
 </div>
 </div>
  

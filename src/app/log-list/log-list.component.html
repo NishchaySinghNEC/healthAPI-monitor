@@ -106,7 +106,8 @@
     <ng-container matColumnDef="details">
       <th mat-header-cell *matHeaderCellDef>Details</th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon aria-hidden="false" (click)="openDialog(element.stackTrace, element.requestBody)" class="arrow-right" >keyboard_arrow_right</mat-icon>
+        <mat-icon aria-hidden="false" (click)="openDialog(element.stackTrace, element.requestBody)" class="arrow-right" *ngIf="element.stackTrace
+        ||element.requestBody">keyboard_arrow_right</mat-icon>
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
         <mat-icon class="arrow-right">keyboard_arrow_right</mat-icon>
