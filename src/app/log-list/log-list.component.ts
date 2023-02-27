@@ -46,7 +46,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   application = Object.keys(ENDPOINTS)
-  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'status', 'responseMessage', 'details'];
+  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'requestMethod','status', 'responseMessage', 'details'];
   dataSource = new MatTableDataSource<LogInterface>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -65,6 +65,9 @@ export class LogListComponent implements OnInit, AfterViewInit {
     height: '70%',
     width: '60%',
     data: dialogData
+  });
+  this.dialogRef.afterClosed().subscribe((result: any) => {
+    this.show = result
   });
 }
 
