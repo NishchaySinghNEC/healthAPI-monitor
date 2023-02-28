@@ -40,6 +40,7 @@ export class ApplicationListComponent implements OnInit {
   private handleError(error: HttpErrorResponse,i:number) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
+      this.elementData[i].status = 'FAIL'
       this.elementData[i].info =  `a client side or network error occured`+"  >>>>>error is " + error.error.type
     }
     else if (error.status===200) {
