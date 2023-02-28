@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DetaildiaComponent } from '../detaildia/detaildia.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ENDPOINTS } from 'src/app/url-constants'
+import { ENDPOINTS, URI_Names } from 'src/app/url-constants'
 import { ApiCallsService } from '../api-calls.service';
 import { LogInterface } from '../log-interface';
 import { LogFormInterface } from '../log-form-interface';
@@ -46,7 +46,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   application = Object.keys(ENDPOINTS)
-  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'requestMethod','status', 'responseMessage', 'details'];
+  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri',"application", 'requestMethod','status', 'responseMessage', 'details'];
   dataSource = new MatTableDataSource<LogInterface>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -113,6 +113,11 @@ export class LogListComponent implements OnInit, AfterViewInit {
       error: () => this.show = false,
       complete: () => this.show = false
     })    
+  }
+
+  getName(url:string){
+    const name = URI_Names.filter(ele=>url.includes(ele.url))[0]
+    return name?name:'Other'
   }
   
 }

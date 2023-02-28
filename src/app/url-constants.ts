@@ -9,3 +9,9 @@ export const ENDPOINTS = [
     {applicationName:'UI Admin',url:'https://admin-qa.housing-dp.dev/#/system-admin/general/users',status:'FAIL',info:''},
     {applicationName:'UI Public',url:'https://northshirecc-qa.housing-dp.dev/health.json',status:'FAIL',info:''}
 ]
+
+export const URI_Names = [
+    {url:'/public',name:"public portal"},
+    {url:'/provider',name:"provider portal"},
+    {url:'/internal',name:"internal portal"},
+]
