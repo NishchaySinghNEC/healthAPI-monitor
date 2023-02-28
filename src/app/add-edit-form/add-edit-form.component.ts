@@ -37,19 +37,34 @@ export class AddEditFormComponent implements OnInit {
   }
 
   createForm(){
+    if(this.data[0]){
     this.applicationDetail = this.fb.group({
       applicationName:[this.data[0].applicationName,[Validators.required]],
       url: [this.data[0].url, [Validators.required]]
-    })
+    })}
+    else {
+      this.applicationDetail = this.fb.group({
+        applicationName:['',[Validators.required]],
+        url: ['', [Validators.required]]
+      })
+    }
   }
+
+  
 
   onSubmit() {
     if(this.applicationDetail.valid){
       const formData = this.applicationDetail.value 
-      const appName = this.data[0].applicationName
+      // const appName = this.data[0].applicationName
       let endpointData = [...this.data[1]]
+      if(this.data[0]){
+        const appName = this.data[0].applicationName
       const ind = endpointData.findIndex(ep=>ep.applicationName==appName)
-      endpointData[ind] = {...endpointData[ind],...formData}
+      endpointData[ind] = {...endpointData[ind],...formData}}
+      else{
+        endpointData.push(formData)
+      }
+      console.log('close',endpointData)
       localStorage.setItem('ENDPOINTS', JSON.stringify(endpointData))
       this.dialogRef.close(endpointData)
     }

@@ -33,6 +33,7 @@ export class ApplicationListComponent implements OnInit {
     }
   }
 
+
   private checkStatus(i:number) {
     this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})    
   }

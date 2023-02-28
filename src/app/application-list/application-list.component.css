@@ -14,3 +14,8 @@
 mat-icon{
     cursor: pointer
 }
+
+.addIcon {
+    display: flex;
+  justify-content: center;
+}
