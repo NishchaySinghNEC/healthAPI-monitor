@@ -3,6 +3,9 @@
     justify-content: center;
 }
 
+.app-list{
+    min-height: 80vh;
+}
 /* Structure */
 table {
     width: 100%;
