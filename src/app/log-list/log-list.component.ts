@@ -117,7 +117,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
 
   getName(url:string){
     const name = URI_Names.filter(ele=>url.includes(ele.url))[0]
-    return name?name:'Other'
+    return name?name.name:'Other'
   }
   
 }
