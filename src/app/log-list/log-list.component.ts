@@ -46,7 +46,7 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   application = Object.keys(ENDPOINTS)
-  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri', 'requestMethod','status', 'responseMessage', 'details'];
+  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'time', 'uri',"application", 'requestMethod','status', 'responseMessage', 'details'];
   dataSource = new MatTableDataSource<LogInterface>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
