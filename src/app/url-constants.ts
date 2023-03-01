@@ -1,6 +1,6 @@
 export const ENDPOINTS = [
     {applicationName:'Provider Portal',url:'https://api.housing-dp.dev/provider/healthcheck', status:'FAIL',info:''},
-    {applicationName:'Public Portal' , url:'https://api.housing-dp.dev/public/healthcheck',status:'FAIL',info:''},
+    {applicationName:'Customer Portal' , url:'https://api.housing-dp.dev/public/healthcheck',status:'FAIL',info:''},
     {applicationName:'Gateway',url:'http://10.146.17.14:5000/apibuilderPing.json',status:'FAIL',info:''},
     {applicationName:'Admin Portal',url:' https://api.housing-dp.dev/admin/healthcheck',status:'FAIL',info:''},
     {applicationName:'OSRM',url:'https://nominatim.openstreetmap.org/status.php',status:'FAIL',info:''},
