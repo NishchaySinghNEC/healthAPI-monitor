@@ -6,12 +6,6 @@
         <input type="number" min="0" placeholder="Enter log limit" formControlName="limit" matInput>
       </mat-form-field>
       <mat-form-field class="mx-2" appearance="standard">
-        <mat-label>Choose Application</mat-label>
-        <mat-select formControlName="appName">
-          <mat-option *ngFor="let app of appName" [value]="app">{{app}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="mx-2" appearance="standard">
         <mat-label>Choose request method</mat-label>
         <mat-select formControlName="requestMethod">
           <mat-option *ngFor="let request of requestMethodList" [value]="request">{{request}}</mat-option>
