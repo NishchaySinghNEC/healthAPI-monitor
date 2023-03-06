@@ -22,3 +22,13 @@ mat-icon{
     display: flex;
   justify-content: center;
 }
+
+mat-card{
+    width: 300px;
+    border: 2px solid black;
+}
+
+.add{
+    width: auto;
+    margin-bottom: 10px;
+}
