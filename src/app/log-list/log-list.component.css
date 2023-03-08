@@ -49,3 +49,15 @@ mat-icon{
     width: auto; 
     text-overflow: ellipsis; 
 }
+
+.mat-column-time {
+   width: 60px;
+}
+
+.mat-column-requestMethod {
+    width: 120px;
+ }
+
+.mat-column-status {
+    width: 60px;
+ }

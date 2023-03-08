@@ -20,7 +20,6 @@ export class LogListComponent implements OnInit, AfterViewInit {
   dialogRef: any;
   ELEMENT_DATA!: LogInterface[];
   requestMethodList: string[] = ['GET', 'POST', 'PUT', 'DELETE'];
-  appName: string[] = ['ENGAGE', 'SCHEDULER']
   logDetails!: FormGroup;
   show = false
 
@@ -42,7 +41,6 @@ export class LogListComponent implements OnInit, AfterViewInit {
         endDate: [null]
       }),
       requestMethod: [null],
-      appName: [null],
       responseStatus: [null],
     })
   }
@@ -83,17 +81,13 @@ export class LogListComponent implements OnInit, AfterViewInit {
   }
 
   appendUrlParams(): string{
-    let url: string = 'http://localhost:9000/api-access-log?'
+    let url = 'http://localhost:9000/api-access-log?'
     let formData: LogFormInterface = this.logDetails.value
     const paramsList = []
     const limit = formData.limit ? formData.limit : 100;
-    const appName = formData.appName ? formData.appName : 'ENGAGE'
 
     if(limit){
       paramsList.push(`limit=${limit}`);
-    }
-    if(appName){
-      paramsList.push(`type=${appName}`)
     }
     if(formData.requestMethod){
       paramsList.push(`requestMethod=${formData.requestMethod}`);
