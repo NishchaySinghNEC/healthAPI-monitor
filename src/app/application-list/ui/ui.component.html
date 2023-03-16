@@ -1,0 +1,20 @@
+<div class="app-list">
+    <div class="row m-3">
+      <div class="col-md-4 p-2" *ngFor="let element of elementData">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{element.applicationName}}</mat-card-title>
+            <mat-icon fontIcon="edit" (click)="openDialog(element)"></mat-icon>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-button [class]="textColor(element.status)" (click)="showMoreInfo(element.info)">{{element.status}}</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="addIcon" >
+        <mat-card (click)="openDialog(null)">
+          <mat-icon>add</mat-icon>
+        </mat-card>
+      </div>
+    </div>
+  </div>

@@ -21,6 +21,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShowMoreDialogComponent } from './show-more-dialog/show-more-dialog.component';
 import { FooterComponent } from './footer/footer.component';
+import { SystemComponent } from './application-list/system/system.component';
+import { UiComponent } from './application-list/ui/ui.component';
+import { ServicesComponent } from './application-list/services/services.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { FooterComponent } from './footer/footer.component';
    
     AddEditFormComponent,
          ShowMoreDialogComponent,
-         FooterComponent
+         FooterComponent,
+         SystemComponent,
+         UiComponent,
+         ServicesComponent
   ],
   imports: [
     BrowserModule,
