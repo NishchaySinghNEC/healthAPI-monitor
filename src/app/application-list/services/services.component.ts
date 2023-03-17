@@ -19,6 +19,7 @@ export class ServicesComponent implements OnInit {
   constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.elementData = this.elementData.filter(data => data.type === 'services' )
     for(let i = 0; i<this.elementData.length; i++){
       this.checkStatus(i)
       // this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
