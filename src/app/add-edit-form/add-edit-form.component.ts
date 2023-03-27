@@ -34,6 +34,7 @@ export class AddEditFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    console.log(this.data);
   }
 
   createForm(){
@@ -60,7 +61,7 @@ export class AddEditFormComponent implements OnInit {
       if(this.data[0]){
         const appName = this.data[0].applicationName
       const ind = endpointData.findIndex(ep=>ep.applicationName==appName)
-      endpointData[ind] = {...endpointData[ind],...formData}}
+      endpointData[ind] = {...endpointData[ind],...formData, type: this.data[2]}}
       else{
         endpointData.push(formData)
       }

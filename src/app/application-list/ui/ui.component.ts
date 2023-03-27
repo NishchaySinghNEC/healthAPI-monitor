@@ -70,7 +70,7 @@ export class UiComponent implements OnInit {
   }
   openDialog(elementData: any){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
-      data: [elementData,this.elementData],
+      data: [elementData,this.elementData,'ui'],
       disableClose: true
     });
     dialofRef.afterClosed().subscribe(result=>{

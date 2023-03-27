@@ -70,7 +70,7 @@ export class ServicesComponent implements OnInit {
   }
   openDialog(elementData: any){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
-      data: [elementData,this.elementData],
+      data: [elementData,this.elementData,'services'],
       disableClose: true
     });
     dialofRef.afterClosed().subscribe(result=>{
