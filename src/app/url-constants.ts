@@ -5,9 +5,9 @@ export const ENDPOINTS = [
     {applicationName:'Admin Portal API',url:' https://api.housing-dp.dev/admin/healthcheck',status:'FAIL',info:'', type: 'system'},
     {applicationName:'OSRM',url:'https://nominatim.openstreetmap.org/status.php',status:'FAIL',info:'', type: 'services'},
     {applicationName:'Key Cloak',url:'https://signin.housing-dp.dev/auth/health',status:'FAIL',info:'', type: 'services'},
-    {applicationName:'UI Provider API',url:'https://provider-qa.housing-dp.dev/#/system-admin/general/users',status:'FAIL',info:'', type: 'ui'},
-    {applicationName:'UI Admin API',url:'https://admin-qa.housing-dp.dev/#/system-admin/general/users',status:'FAIL',info:'', type: 'ui'},
-    {applicationName:'UI Public API',url:'https://northshirecc-qa.housing-dp.dev/health.json',status:'FAIL',info:'', type: 'ui'}
+    {applicationName:'Provider API',url:'https://provider-qa.housing-dp.dev/#/system-admin/general/users',status:'FAIL',info:'', type: 'ui'},
+    {applicationName:'Admin API',url:'https://admin-qa.housing-dp.dev/#/system-admin/general/users',status:'FAIL',info:'', type: 'ui'},
+    {applicationName:'Public API',url:'https://northshirecc-qa.housing-dp.dev/health.json',status:'FAIL',info:'', type: 'ui'}
 ]
 
 export const URI_Names = [
