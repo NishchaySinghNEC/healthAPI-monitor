@@ -20,6 +20,7 @@ export class SystemComponent implements OnInit {
 
   ngOnInit(): void {
     this.elementData = this.elementData.filter(data => data.type === 'system' )
+    
     for(let i = 0; i<this.elementData.length; i++){
       this.checkStatus(i)
       // this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  

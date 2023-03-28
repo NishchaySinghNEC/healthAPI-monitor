@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { catchError, throwError } from 'rxjs';
 import { AddEditFormComponent } from 'src/app/add-edit-form/add-edit-form.component';
@@ -15,18 +15,22 @@ import { ENDPOINTS } from 'src/app/url-constants';
 export class UiComponent implements OnInit {
 
   elementData:any[]  = localStorage.getItem('ENDPOINTS')?JSON.parse(localStorage.getItem('ENDPOINTS')||'{}'):[...ENDPOINTS];
+  displayDat = this.elementData.filter(data => data.type === 'ui' )
+  @Input() page:string = 'services'
 
   constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.elementData = this.elementData.filter(data => data.type === 'ui' )
+    console.log(this.elementData)
     for(let i = 0; i<this.elementData.length; i++){
       this.checkStatus(i)
       // this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
     }
   }
 
-
+   updateDisplay(dat:any[],filter:string) {
+    return dat.filter(data => data.type === filter )
+  }
   private checkStatus(i:number) {
     this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})    
   }
@@ -70,7 +74,7 @@ export class UiComponent implements OnInit {
   }
   openDialog(elementData: any){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
-      data: [elementData,this.elementData,'ui'],
+      data: [elementData,this.elementData,this.page],
       disableClose: true
     });
     dialofRef.afterClosed().subscribe(result=>{

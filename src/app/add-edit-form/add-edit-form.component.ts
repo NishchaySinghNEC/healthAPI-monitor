@@ -61,11 +61,11 @@ export class AddEditFormComponent implements OnInit {
       if(this.data[0]){
         const appName = this.data[0].applicationName
       const ind = endpointData.findIndex(ep=>ep.applicationName==appName)
-      endpointData[ind] = {...endpointData[ind],...formData, type: this.data[2]}}
-      else{
-        endpointData.push(formData)
+      endpointData[ind] = {...endpointData[ind],...formData}
       }
-      console.log('close',endpointData)
+      else{
+        endpointData.push({...formData,type: this.data[2]})
+      }
       localStorage.setItem('ENDPOINTS', JSON.stringify(endpointData))
       this.dialogRef.close(endpointData)
     }

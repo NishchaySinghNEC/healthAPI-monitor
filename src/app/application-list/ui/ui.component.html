@@ -1,6 +1,6 @@
 <div class="app-list">
     <div class="row m-3">
-      <div class="col-md-4 p-2" *ngFor="let element of elementData">
+      <div class="col-md-4 p-2" *ngFor="let element of updateDisplay(elementData,this.page)">
         <mat-card>
           <mat-card-header>
             <mat-card-title>{{element.applicationName}}</mat-card-title>
