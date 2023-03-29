@@ -35,7 +35,13 @@ export class UiComponent implements OnInit {
   }
 
   private checkStatus(i:number) {
-    this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS'; this.elementData[i].info='working properly'})    
+    this.apiSrv.apiCheckCall(this.elementData[i].url).subscribe({
+      complete: () => {
+        this.elementData[i].status = 'SUCCESS'; 
+        this.elementData[i].info= 'working properly'
+      },
+      error: (err) => this.handleError(err,i)
+    })    
   }
 
   private handleError(error: HttpErrorResponse,i:number) {
@@ -74,6 +80,12 @@ export class UiComponent implements OnInit {
     for(let i = 0; i<this.elementData.length; i++){
       this.checkStatus(i)
     }
+  }
+
+  delete(id: string){
+    this.apiSrv.delete(id).subscribe({
+      complete: () => this.getData()
+    })
   }
   
   openDialog(elementData: any){

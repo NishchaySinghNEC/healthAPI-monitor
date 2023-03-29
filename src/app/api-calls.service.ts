@@ -10,9 +10,8 @@ export class ApiCallsService {
 
   constructor( private http: HttpClient) { }
 
-  public apiCheckCall(url:string){
-    return this.http.get<any>(url,
-      {observe:'response'})
+  public apiCheckCall(url: string){
+    return this.http.get(url)
   }
 
   public callLog(url:string): Observable<LogInterface[]>{
@@ -33,5 +32,9 @@ export class ApiCallsService {
 
   public callLogDetails(url:string,body:any): Observable<any>{
     return this.http.get<any>(url,body)
+  }
+
+  public delete(id: string){
+    return this.http.delete(`http://localhost:9000/deleteBaseUrl/${id}`)
   }
 }
