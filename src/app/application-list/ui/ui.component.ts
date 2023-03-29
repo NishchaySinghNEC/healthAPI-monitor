@@ -99,8 +99,8 @@ export class UiComponent implements OnInit {
           complete: () => this.getData()
         });
       }
-      else{
-        this.apiSrv.updateLog(result).subscribe({
+      else if(result[0] === 'edit'){
+        this.apiSrv.updateLog(result[1]).subscribe({
           complete: () => this.getData()
         });
       }

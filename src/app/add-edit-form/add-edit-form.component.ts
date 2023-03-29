@@ -40,7 +40,7 @@ export class AddEditFormComponent implements OnInit {
       const formData = this.applicationDetail.value 
       const newData = {...this.data[0], ...formData}
       if(this.data[0]){
-        this.dialogRef.close(newData);
+        this.dialogRef.close(['edit', newData]);
       }
       else{
         this.dialogRef.close(['add', {...formData, component: this.data[2]}]);
