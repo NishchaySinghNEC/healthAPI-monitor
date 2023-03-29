@@ -19,6 +19,18 @@ export class ApiCallsService {
     return this.http.get<LogInterface[]>(url)
   }
 
+  public postLog(body:any){
+    return this.http.post(`http://localhost:9000/createBaseUrl`, body)
+  }
+
+  public updateLog(body:any){
+    return this.http.put(`http://localhost:9000/updateBaseUrl`, body)
+  }
+
+  public getDataList(component: string){
+    return this.http.get(`http://localhost:9000/getBaseUrl?type=${component}`)
+  }
+
   public callLogDetails(url:string,body:any): Observable<any>{
     return this.http.get<any>(url,body)
   }

@@ -5,46 +5,49 @@ import { catchError, throwError } from 'rxjs';
 import { AddEditFormComponent } from 'src/app/add-edit-form/add-edit-form.component';
 import { ApiCallsService } from 'src/app/api-calls.service';
 import { ShowMoreDialogComponent } from 'src/app/show-more-dialog/show-more-dialog.component';
-import { ENDPOINTS } from 'src/app/url-constants';
 
 @Component({
   selector: 'app-ui',
   templateUrl: './ui.component.html',
   styleUrls: ['./ui.component.css']
 })
+
 export class UiComponent implements OnInit {
 
-  elementData:any[]  = localStorage.getItem('ENDPOINTS')?JSON.parse(localStorage.getItem('ENDPOINTS')||'{}'):[...ENDPOINTS];
-  displayDat = this.elementData.filter(data => data.type === 'ui' )
-  @Input() page:string = 'services'
+  elementData!: any
+  @Input() page!: string 
 
   constructor(private apiSrv: ApiCallsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    console.log(this.elementData)
-    for(let i = 0; i<this.elementData.length; i++){
-      this.checkStatus(i)
-      // this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
-    }
+    this.getData();
   }
 
-   updateDisplay(dat:any[],filter:string) {
-    return dat.filter(data => data.type === filter )
+  getData(){
+    this.apiSrv.getDataList(this.page).subscribe({
+      next: (data: any)=> {
+        this.elementData = data.map((object: any) => {
+          return {...object, info: '', status: 'FAIL'}
+        });
+      },
+      complete: () => this.refreshStatus() 
+    })
   }
+
   private checkStatus(i:number) {
-    this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})    
+    this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS'; this.elementData[i].info='working properly'})    
   }
+
   private handleError(error: HttpErrorResponse,i:number) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
       this.elementData[i].status = 'FAIL'
-      this.elementData[i].info =  `a client side or network error occured`+"  >>>>>error is " + error.error.type
+      this.elementData[i].info =  `a client side or network error occurred`+"  >>>>> error is " + error.error.type
     }
     else if (error.status===200) {
       //if url not present
-      if(this.elementData[i].url===''){this.elementData[i].status = 'NO URL PRESENT'; this.elementData[i].info='PLEASE ADD API URL'}
+      if(this.elementData[i].url===''){this.elementData[i].status = 'NO URL PRESENT'; this.elementData[i].info= 'PLEASE ADD API URL'}
       else this.elementData[i].status = 'SUCCESS'
-      //console.log(error.error)
     }
      else {
       // The backend returned an unsuccessful response code.
@@ -66,21 +69,28 @@ export class UiComponent implements OnInit {
       data: element,
     });
   }
+
   refreshStatus(){
     for(let i = 0; i<this.elementData.length; i++){
       this.checkStatus(i)
-      // this.apiSrv.apiCheckCall(this.elementData[i].url).pipe(catchError(err=>this.handleError(err,i))).subscribe(data=> {this.elementData[i].status = 'SUCCESS';this.elementData[i].info='working properly'})  
     }
   }
+  
   openDialog(elementData: any){
     const dialofRef = this.dialog.open(AddEditFormComponent,{
-      data: [elementData,this.elementData,this.page],
+      data: [elementData, this.elementData, this.page],
       disableClose: true
     });
     dialofRef.afterClosed().subscribe(result=>{
-      if(result){
-        this.elementData = result;
-        this.refreshStatus()
+      if(result[0] === 'add'){
+        this.apiSrv.postLog(result[1]).subscribe({
+          complete: () => this.getData()
+        });
+      }
+      else{
+        this.apiSrv.updateLog(result).subscribe({
+          complete: () => this.getData()
+        });
       }
     })
   }

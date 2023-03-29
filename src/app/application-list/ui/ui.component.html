@@ -1,9 +1,9 @@
 <div class="app-list">
     <div class="row m-3">
-      <div class="col-md-4 p-2" *ngFor="let element of updateDisplay(elementData,this.page)">
+      <div class="col-md-4 p-2" *ngFor="let element of elementData">
         <mat-card>
           <mat-card-header>
-            <mat-card-title>{{element.applicationName}}</mat-card-title>
+            <mat-card-title>{{element.portalName}}</mat-card-title>
             <mat-icon fontIcon="edit" (click)="openDialog(element)"></mat-icon>
           </mat-card-header>
           <mat-card-actions>
